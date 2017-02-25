@@ -3,19 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <tabs>
+
         <tab
-            id="@+id/first"
-            title="@string/first"
-            icon="@mipmap/ic_extension_black_24dp"/>
+            id="@+id/third"
+            title="@string/third"
+            icon="@mipmap/ic_loyalty_black_24dp"/>
+
         <tab
             id="@+id/second"
             title="@string/second"
             icon="@mipmap/ic_library_books_black_24dp"/>
 
         <tab
-            id="@+id/third"
-            title="@string/third"
-            icon="@mipmap/ic_loyalty_black_24dp"/>
+            id="@+id/first"
+            title="@string/first"
+            icon="@mipmap/ic_extension_black_24dp"/>
 
         <tab
             id="@+id/fourth"
