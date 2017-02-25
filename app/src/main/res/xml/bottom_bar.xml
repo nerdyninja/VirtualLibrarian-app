@@ -5,7 +5,7 @@
     <tabs>
 
         <tab
-            id="@+id/third"
+            id="@+id/first"
             title="@string/third"
             icon="@mipmap/ic_loyalty_black_24dp"/>
 
@@ -15,7 +15,7 @@
             icon="@mipmap/ic_library_books_black_24dp"/>
 
         <tab
-            id="@+id/first"
+            id="@+id/third"
             title="@string/first"
             icon="@mipmap/ic_extension_black_24dp"/>
 
