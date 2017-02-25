@@ -8,7 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.example.virtuallibrarian.R;
+import com.example.virtuallibrarian.fragments.BooksFragment;
+import com.example.virtuallibrarian.fragments.IssuesFragment;
 import com.example.virtuallibrarian.fragments.ProfileFragment;
+import com.example.virtuallibrarian.fragments.UpdatesFragment;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
@@ -27,6 +30,18 @@ public class HomeActivity extends AppCompatActivity {
                 if(tabId==R.id.fourth)
                 {
                     fragment = new ProfileFragment();
+                }
+                else if(tabId==R.id.second)
+                {
+                    fragment = new BooksFragment();
+                }
+                else if(tabId==R.id.third)
+                {
+                    fragment = new IssuesFragment();
+                }
+                else if(tabId==R.id.first)
+                {
+                    fragment = new UpdatesFragment();
                 }
 
                 if (fragment != null) {
