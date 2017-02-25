@@ -41,7 +41,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
                 else if(tabId==R.id.first)
                 {
-                    fragment = new UpdatesFragment();
+                    fragment = new UpdatesFragment(HomeActivity.this);
                 }
 
                 if (fragment != null) {

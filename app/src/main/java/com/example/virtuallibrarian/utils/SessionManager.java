@@ -7,6 +7,9 @@ import android.util.Log;
 
 import com.example.virtuallibrarian.activities.LoginActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by rohitramaswamy on 25/02/17.
  */
@@ -21,6 +24,8 @@ public class SessionManager {
     private static final String PREF_NAME= "Pref_file";
     // all shared preferences keys
     private static final String IS_LOGIN = "false";
+
+    private static List<Book> bookList = new ArrayList<>();
 
     // making it public so that it can be used in other classes too.
     public static final String KEY_FIRST_NAME = "username";
@@ -56,7 +61,7 @@ public class SessionManager {
     public void logoutUser(Context context) {
         // Clearing all data from Shared Preferences
         editor.clear();
-        editor.commit();
+        editor.apply();
 
         // After logout redirect user to Main Activity
         Intent i = new Intent(context, LoginActivity.class);
@@ -103,5 +108,16 @@ public class SessionManager {
     public String getName()
     {
         return getKeyFirstName()+getKeyFirstName();
+    }
+
+    public void addBook(Book bk)
+    {
+        Log.v("added","to bookList");
+        bookList.add(bk);
+    }
+
+    List<Book> getBookList()
+    {
+        return bookList;
     }
 }

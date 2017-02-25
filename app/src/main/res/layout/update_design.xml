@@ -1,0 +1,93 @@
+<!-- EventFragment.xml-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:paddingLeft="7dp"
+    android:paddingRight="7dp"
+    android:paddingTop="10dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/book_photo"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp" />
+
+
+            <TextView
+                android:id="@+id/book_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="0dp"
+                android:layout_toRightOf="@id/book_photo"
+                android:textColor="#4285F4"
+                android:textSize="25sp"
+                tools:text="Title here" />
+
+            <!--    -->
+
+            <TextView
+                android:id="@+id/book_surname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/book_name"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:minLines="1"
+                android:maxLines="8"
+                android:paddingBottom="10dp"
+                android:textColor="#212121"
+                android:textSize="18sp"
+                tools:text="we were on a break miss chanandler bong unagi salmon skin roll transponster lobster" />
+
+            <View
+                android:id="@+id/faint_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/book_surname"
+                android:layout_marginBottom="5dp"
+                android:background="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/time_stamp_logo"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_below="@id/faint_line"
+                android:paddingEnd="10dp"
+                android:src="@mipmap/calendar_1" />
+
+            <TextView
+                android:id="@+id/book_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/faint_line"
+                android:layout_toRightOf="@id/time_stamp_logo"
+                android:paddingTop="7dp"
+                android:textColor="#9E9E9E"
+                tools:text="Timestamp" />
+            <!--android:text="timestamp"-->
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
