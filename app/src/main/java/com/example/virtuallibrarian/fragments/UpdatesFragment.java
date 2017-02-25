@@ -25,6 +25,7 @@ import java.util.List;
  */
 
 public class UpdatesFragment extends Fragment {
+
     SessionManager session;
     Context context;
     private List<Book> bookList = new ArrayList<Book>();
@@ -44,19 +45,15 @@ public class UpdatesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        Log.v("t","u");
+        Log.v("t", "u");
         View view = inflater.inflate(R.layout.fragment_updates, container, false);
-        recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_updates);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        new FetchUpdates(context,recyclerView).execute();
+        new FetchUpdates(context, recyclerView).execute();
 
-       // bookList.add(new Book("hello","its me","i was"));
-       //updatesAdapter= new UpdatesAdapter(context,bookList);
-       // recyclerView.setAdapter(updatesAdapter);
+        // bookList.add(new Book("hello","its me","i was"));
+        //updatesAdapter= new UpdatesAdapter(context,bookList);
+        // recyclerView.setAdapter(updatesAdapter);
         return view;
     }
-
-
-
-
 }

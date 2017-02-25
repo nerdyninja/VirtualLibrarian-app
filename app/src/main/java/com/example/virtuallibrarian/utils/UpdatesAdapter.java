@@ -31,7 +31,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.BookView
     {
         ctx = context;
         session = new SessionManager(context);
-        this.bookList = session.getBookList();
+        this.bookList = session.getUpdateList();
         Log.v("booklist Size",bookList.size()+" ");
         //bookList=session.getBookList();
     }

@@ -18,36 +18,24 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by rohitramaswamy on 25/02/17.
+ * Created by rohitramaswamy on 26/02/17.
  */
 
-public class FetchUpdates extends AsyncTask<Void,Void,String> {
+public class FetchBooks extends AsyncTask<Void,Void,String> {
 
     Context context;
     SessionManager session;
     RecyclerView recyclerView;
 
-    public FetchUpdates(Context context, RecyclerView recyclerView) {
+    public FetchBooks(Context context, RecyclerView recyclerView) {
         this.context = context;
         this.recyclerView=recyclerView;
     }
+    public FetchBooks() {}
 
     @Override
-    protected void onPreExecute() {
-
-    }
-
-    @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
-        recyclerView.setAdapter(new UpdatesAdapter(context,session.getUpdateList()));
-        Toast.makeText(context,"List Updated", Toast.LENGTH_SHORT).show();
-
-    }
-
-    @Override
-    protected String doInBackground(Void... params) {
-        String url2 = "http://192.168.43.220/apis/updates.php";
+    protected String doInBackground(Void... voids) {
+        String link = "http://192.168.43.220/apis/listBooks.php";
         Log.v("jkj","kjk");
         HttpURLConnection httpURLConnection = null;
         InputStream inputStream = null;
@@ -55,7 +43,7 @@ public class FetchUpdates extends AsyncTask<Void,Void,String> {
         session = new SessionManager(context);
         try{
 
-            URL url = new URL(url2);
+            URL url = new URL(link);
             httpURLConnection = (HttpURLConnection)url.openConnection();
             httpURLConnection.setRequestMethod("GET");
             inputStream =  new BufferedInputStream(httpURLConnection.getInputStream());
@@ -73,14 +61,12 @@ public class FetchUpdates extends AsyncTask<Void,Void,String> {
             httpURLConnection.disconnect();
         }
         String result = stringBuilder.toString();
-        Log.v("tag",result);
+        Log.v("FetchBookResp",result);
         JSONObject root = null;
         try {
             root = new JSONObject(result);
             String status = root.optString("status");
             JSONArray resultArray = root.optJSONArray("result");
-            session.clear();
-
             for(int i=0;i<resultArray.length();i++)
             {
                 JSONObject jsonObject = resultArray.optJSONObject(i);
@@ -89,17 +75,28 @@ public class FetchUpdates extends AsyncTask<Void,Void,String> {
                 String description = jsonObject.optString("description");
                 String branch = jsonObject.optString("branch");
                 String year = jsonObject.optString("year");
-                String type = jsonObject.optString("type");
+                String type = jsonObject.optString("categories");
                 String created_at = jsonObject.optString("created_at");
                 String updated_at = jsonObject.optString("updated_at");
-
-                session.addUpdate(new Book(title,description,type));
+                String author = jsonObject.optString("authors");
+                String publisher = jsonObject.optString("publisher");
+                String isbn = jsonObject.optString("isbn");
+                String categories = jsonObject.optString("categories");
+                session.addBook(new BookCard(title,description,author,publisher));
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return result;
+        return result;    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
     }
 
-
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+        recyclerView.setAdapter(new BooksAdapter(context,session.getUpdateList()));
+        Toast.makeText(context,"List Updated", Toast.LENGTH_SHORT).show();    }
 }

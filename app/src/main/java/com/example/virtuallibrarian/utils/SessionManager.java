@@ -25,7 +25,11 @@ public class SessionManager {
     // all shared preferences keys
     private static final String IS_LOGIN = "false";
 
-    private static List<Book> bookList = new ArrayList<>();
+    private static List<Book> updateList = new ArrayList<>();
+
+    private static List<BookCard> bookList = new ArrayList<>();
+
+    private static List<Book> issueList = new ArrayList<>();
 
     // making it public so that it can be used in other classes too.
     public static final String KEY_FIRST_NAME = "username";
@@ -38,7 +42,7 @@ public class SessionManager {
     // Constructor
     public SessionManager(Context context) {
         this.context = context;
-        pref = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
+        pref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         editor = pref.edit();
     }
 
@@ -110,14 +114,41 @@ public class SessionManager {
         return getKeyFirstName()+getKeyFirstName();
     }
 
-    public void addBook(Book bk)
+    public void addUpdate(Book bk)
+    {
+        Log.v("added","to updateList");
+        updateList.add(bk);
+    }
+
+    public void addBook(BookCard bk)
     {
         Log.v("added","to bookList");
         bookList.add(bk);
     }
 
-    List<Book> getBookList()
+    public void clear(){
+        issueList.clear();
+        updateList.clear();
+        bookList.clear();
+    }
+    public void addIssue(Book bk)
+    {
+        Log.v("added","to issueList");
+        issueList.add(bk);
+    }
+
+    List<Book> getUpdateList()
+    {
+        return updateList;
+    }
+
+    List<BookCard> getBookList()
     {
         return bookList;
+    }
+
+    List<Book> getIssueList()
+    {
+        return issueList;
     }
 }

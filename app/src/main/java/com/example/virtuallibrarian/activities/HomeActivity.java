@@ -33,11 +33,11 @@ public class HomeActivity extends AppCompatActivity {
                 }
                 else if(tabId==R.id.second)
                 {
-                    fragment = new BooksFragment();
+                    fragment = new BooksFragment(HomeActivity.this);
                 }
                 else if(tabId==R.id.third)
                 {
-                    fragment = new IssuesFragment();
+                    fragment = new IssuesFragment(HomeActivity.this);
                 }
                 else if(tabId==R.id.first)
                 {
