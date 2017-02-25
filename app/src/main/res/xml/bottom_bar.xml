@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <tabs>
+        <tab
+            id="@+id/1"
+            title="Tab1"/>
+        <tab
+            id="@+id/2"
+            title="Tab2"/>
+    </tabs>
+
+</PreferenceScreen>
