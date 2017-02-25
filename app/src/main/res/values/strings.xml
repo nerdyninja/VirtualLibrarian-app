@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Virtual Librarian</string>
+    <string name="first">Issues</string>
+    <string name="second">Books</string>
+    <string name="third">Updates</string>
+    <string name="fourth">Profile</string>
 </resources>

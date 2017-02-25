@@ -19,7 +19,7 @@ public class HomeActivity extends AppCompatActivity {
         bottomBar.setOnTabReselectListener(new OnTabReselectListener() {
             @Override
             public void onTabReSelected(@IdRes int tabId) {
-                
+
             }
         });
     }

@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <tabs>
         <tab
-            id="@+id/1"
-            title="Tab1"/>
+            id="@+id/first"
+            title="@string/first"
+            icon="@mipmap/ic_extension_black_24dp"/>
         <tab
-            id="@+id/2"
-            title="Tab2"/>
+            id="@+id/second"
+            title="@string/second"
+            icon="@mipmap/ic_library_books_black_24dp"/>
+
+        <tab
+            id="@+id/third"
+            title="@string/third"
+            icon="@mipmap/ic_loyalty_black_24dp"/>
+
+        <tab
+            id="@+id/fourth"
+            title="@string/fourth"
+            icon="@mipmap/ic_account_circle_black_24dp"/>
+
     </tabs>
 
 </PreferenceScreen>

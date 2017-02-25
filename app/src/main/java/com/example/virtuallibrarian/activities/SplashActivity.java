@@ -1,8 +1,11 @@
-package com.example.virtuallibrarian;
+package com.example.virtuallibrarian.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+
+import com.example.virtuallibrarian.R;
 
 public class SplashActivity extends AppCompatActivity {
     public static final int SPLASH_TIME_OUT = 2000;
@@ -14,9 +17,12 @@ public class SplashActivity extends AppCompatActivity {
 
         new Handler().postDelayed(new Runnable() {
             @Override
+
             public void run() {
-                //final Intent i = new Intent(SplashActivity.this, DetailActivity.class);
-                //startActivity(i);
+
+                final Intent i = new Intent(SplashActivity.this, LoginActivity.class);
+
+                startActivity(i);
                 finish();
             }
         }, SPLASH_TIME_OUT);
