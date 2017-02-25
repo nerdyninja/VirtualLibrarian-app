@@ -3,6 +3,7 @@ package com.example.virtuallibrarian.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.example.virtuallibrarian.activities.LoginActivity;
 
@@ -38,14 +39,17 @@ public class SessionManager {
 
     public void CreateLoginSession(String fname,String lname,String prn,String branch,String year)
     {
+        Log.v("in","Create login");
         // setting flag
-        editor.putBoolean(IS_LOGIN,true);
+        editor.putString(IS_LOGIN,"true");
+        //Log.v("value",IS_LOGIN);
         // storing details
         editor.putString(KEY_FIRST_NAME,fname);
         editor.putString(KEY_LAST_NAME,lname);
         editor.putString(KEY_PRN,prn);
         editor.putString(KEY_BRANCH,branch);
         editor.putString(KEY_YEAR,year);
+        editor.apply();
     }
 
 
@@ -76,9 +80,9 @@ public class SessionManager {
         return pref.getString(KEY_LAST_NAME,"last name");
     }
 
-    public boolean getIsLogin()
+    public String getIsLogin()
     {
-        return pref.getBoolean(IS_LOGIN,false);
+        return pref.getString(IS_LOGIN,"false");
     }
 
     public String getKeyPrn()

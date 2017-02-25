@@ -85,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Long created = result.optLong("created_at");
                                 Long updated = result.optLong("updated_at");
                                 session.CreateLoginSession(fname, lname, prn, branch, year);
-
+                                Log.v("u","i");
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
