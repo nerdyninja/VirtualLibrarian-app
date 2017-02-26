@@ -1,6 +1,7 @@
 package com.example.virtuallibrarian.utils;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -65,6 +66,16 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.IssueViewHol
     public void onBindViewHolder(IssueAdapter.IssueViewHolder holder, int position) {
 
         holder.personName.setText(IssueList.get(position).title);
+        Log.v("Issue status",IssueList.get(position).getStatus());
+        if(IssueList.get(position).getStatus().equals("0")){
+            //green
+            holder.personName.setTextColor(Color.parseColor("#4CAF50"));
+        }
+        else {
+            //red
+            holder.personName.setTextColor(Color.parseColor("#F44336"));
+
+        }
         holder.personAge.setText(IssueList.get(position).dateToDisplay);
         //holder.personAge.setText(IssueList.get(position).DateToDisplay());
         //Log.v("SIES", IssueList.get(position).type);

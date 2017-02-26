@@ -107,7 +107,7 @@ public class FetchIssue extends AsyncTask<Void,Void,String> {
                     createdAt*=1000;Date date = new Date(createdAt);
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE, d MMM yyyy hh:mm aaa");
                     String dateToDisplay = simpleDateFormat.format(date);
-                    session.addIssue(new IssueCard(title1, description,status, dateToDisplay));
+                    session.addIssue(new IssueCard(title1, description,status1, dateToDisplay));
                 }
             }
         }catch (JSONException e) {

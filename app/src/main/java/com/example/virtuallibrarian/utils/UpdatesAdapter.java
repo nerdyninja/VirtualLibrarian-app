@@ -67,7 +67,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.BookView
 
         holder.personName.setText(bookList.get(position).title);
         holder.personSurname.setText(bookList.get(position).description);
-        //holder.personAge.setText(bookList.get(position).time);
+        holder.personAge.setText(bookList.get(position).DateToDisplay);
         Log.v("SIES", bookList.get(position).type);
 
     }
