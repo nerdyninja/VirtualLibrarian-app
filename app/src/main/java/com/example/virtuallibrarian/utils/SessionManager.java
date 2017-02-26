@@ -29,7 +29,7 @@ public class SessionManager {
 
     private static List<BookCard> bookList = new ArrayList<>();
 
-    private static List<Book> issueList = new ArrayList<>();
+    private static List<IssueCard> issueList = new ArrayList<>();
 
     // making it public so that it can be used in other classes too.
     public static final String KEY_FIRST_NAME = "username";
@@ -137,7 +137,7 @@ public class SessionManager {
         updateList.clear();
         bookList.clear();
     }
-    public void addIssue(Book bk)
+    public void addIssue(IssueCard bk)
     {
         Log.v("added","to issueList");
         issueList.add(bk);
@@ -153,7 +153,7 @@ public class SessionManager {
         return bookList;
     }
 
-    List<Book> getIssueList()
+    List<IssueCard> getIssueList()
     {
         return issueList;
     }

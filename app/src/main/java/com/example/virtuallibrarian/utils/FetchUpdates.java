@@ -47,12 +47,12 @@ public class FetchUpdates extends AsyncTask<Void,Void,String> {
         this.recyclerView=recyclerView;
     }
 
-    public void showNotif()
+    public void showNotif(String title)
     {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
         builder.setSmallIcon(R.mipmap.ic_launcher);
-        builder.setContentTitle("Notif");
-        builder.setContentText("Click to reserve");
+        builder.setContentTitle(title);
+        builder.setContentText("Click to reserve your book");
         Intent intent = new Intent(context, HomeActivity.class);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
         stackBuilder.addParentStack(HomeActivity.class);
@@ -133,7 +133,7 @@ public class FetchUpdates extends AsyncTask<Void,Void,String> {
                 String updated_at = jsonObject.optString("updated_at");
                 if(type.equalsIgnoreCase("exams"))
                 {
-                    showNotif();
+                    showNotif(title);
                 }
                 session.addUpdate(new Book(title,description,type));
             }

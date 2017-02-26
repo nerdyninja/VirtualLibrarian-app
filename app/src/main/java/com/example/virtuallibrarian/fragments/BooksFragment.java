@@ -57,12 +57,6 @@ public class BooksFragment extends Fragment {
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view_books);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         new FetchBooks(context,recyclerView).execute();
-        recyclerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
         // bookList.add(new Book("hello","its me","i was"));
         //updatesAdapter= new UpdatesAdapter(context,bookList);
