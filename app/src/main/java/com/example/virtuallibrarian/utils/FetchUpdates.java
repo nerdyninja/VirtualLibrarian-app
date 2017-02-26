@@ -1,10 +1,19 @@
 package com.example.virtuallibrarian.utils;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.app.TaskStackBuilder;
+import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.example.virtuallibrarian.R;
+import com.example.virtuallibrarian.activities.HomeActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,14 +35,43 @@ public class FetchUpdates extends AsyncTask<Void,Void,String> {
     Context context;
     SessionManager session;
     RecyclerView recyclerView;
+    NotificationManager manager;
+    ProgressDialog prog;
 
-    public FetchUpdates(Context context, RecyclerView recyclerView) {
+
+
+
+    public FetchUpdates(Context context, RecyclerView recyclerView,NotificationManager manager) {
         this.context = context;
+        this.manager = manager;
         this.recyclerView=recyclerView;
+    }
+
+    public void showNotif()
+    {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setContentTitle("Notif");
+        builder.setContentText("Click to reserve");
+        Intent intent = new Intent(context, HomeActivity.class);
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+        stackBuilder.addParentStack(HomeActivity.class);
+        stackBuilder.addNextIntent(intent);
+        PendingIntent pendingIntent= stackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(pendingIntent);
+        manager.notify(0,builder.build());
     }
 
     @Override
     protected void onPreExecute() {
+        super.onPreExecute();
+
+        prog = new ProgressDialog(context);
+        prog.setCancelable(true);
+        prog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        prog.setMessage("Fetching Book List...");
+        prog.setTitle("vLibrarian");
+        prog.show();
 
     }
 
@@ -41,6 +79,7 @@ public class FetchUpdates extends AsyncTask<Void,Void,String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         recyclerView.setAdapter(new UpdatesAdapter(context,session.getUpdateList()));
+        prog.dismiss();
         Toast.makeText(context,"List Updated", Toast.LENGTH_SHORT).show();
 
     }
@@ -92,7 +131,10 @@ public class FetchUpdates extends AsyncTask<Void,Void,String> {
                 String type = jsonObject.optString("type");
                 String created_at = jsonObject.optString("created_at");
                 String updated_at = jsonObject.optString("updated_at");
-
+                if(type.equalsIgnoreCase("exams"))
+                {
+                    showNotif();
+                }
                 session.addUpdate(new Book(title,description,type));
             }
         } catch (JSONException e) {

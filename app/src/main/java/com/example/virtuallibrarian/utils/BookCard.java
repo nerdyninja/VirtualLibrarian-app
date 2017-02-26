@@ -12,13 +12,20 @@ public class BookCard {
     String publisher;
     String author;
     String categories;
+    String isbn;
 
-    public BookCard(String title,String description,String publisher, String author)
+    public BookCard(String isbn)
+    {
+        this.isbn = isbn;
+    }
+
+    public BookCard(String title,String description,String publisher, String author,String isbn)
     {
         this.title = title;
         this.description = description;
         this.publisher = publisher;
         this.author = author;
+        this.isbn = isbn;
     }
     public BookCard(String title,String description)
     {
@@ -49,6 +56,15 @@ public class BookCard {
     public void setCategories(String categories)
     {
         this.categories = categories;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public String getIsbn()
+    {
+        return this.isbn;
     }
 
     public String getTitle()

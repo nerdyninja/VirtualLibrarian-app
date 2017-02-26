@@ -1,9 +1,9 @@
 package com.example.virtuallibrarian.fragments;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 
 import com.example.virtuallibrarian.R;
 import com.example.virtuallibrarian.utils.Book;
-import com.example.virtuallibrarian.utils.FetchUpdates;
 import com.example.virtuallibrarian.utils.SessionManager;
 import com.example.virtuallibrarian.utils.UpdatesAdapter;
 
@@ -49,7 +48,7 @@ public class IssuesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_issue, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_issue);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        new FetchUpdates(context, recyclerView).execute();
+        //new FetchUpdates(context, recyclerView).execute();
 
         // bookList.add(new Book("hello","its me","i was"));
         //updatesAdapter= new UpdatesAdapter(context,bookList);

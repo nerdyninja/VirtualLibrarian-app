@@ -1,5 +1,6 @@
 package com.example.virtuallibrarian.utils;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
@@ -26,6 +27,7 @@ public class FetchBooks extends AsyncTask<Void,Void,String> {
     Context context;
     SessionManager session;
     RecyclerView recyclerView;
+    ProgressDialog prog;
 
     public FetchBooks(Context context, RecyclerView recyclerView) {
         this.context = context;
@@ -82,7 +84,7 @@ public class FetchBooks extends AsyncTask<Void,Void,String> {
                 String publisher = jsonObject.optString("publisher");
                 String isbn = jsonObject.optString("isbn");
                 String categories = jsonObject.optString("categories");
-                session.addBook(new BookCard(title,description,author,publisher));
+                session.addBook(new BookCard(title,description,author,publisher,isbn));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -92,11 +94,18 @@ public class FetchBooks extends AsyncTask<Void,Void,String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        prog = new ProgressDialog(context);
+        prog.setCancelable(true);
+        prog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        prog.setMessage("Fetching Book List...");
+        prog.setTitle("vLibrarian");
+        prog.show();
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         recyclerView.setAdapter(new BooksAdapter(context,session.getUpdateList()));
+        prog.dismiss();
         Toast.makeText(context,"List Updated", Toast.LENGTH_SHORT).show();    }
 }

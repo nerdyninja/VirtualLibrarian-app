@@ -1,5 +1,6 @@
 package com.example.virtuallibrarian.activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String t = "LOG_TAG";
     private Request request;
     String responseString;
+    ProgressDialog prog;
     SessionManager session ;
 
     @Override
@@ -43,6 +45,12 @@ public class LoginActivity extends AppCompatActivity {
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                prog = new ProgressDialog(LoginActivity.this);
+                prog.setCancelable(true);
+                prog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                prog.setMessage(" Logging in...");
+                prog.setTitle("vLibrarian");
+                prog.show();
                 String email = Email.getText().toString();
                 String password = Password.getText().toString();
                 String url = "http://192.168.43.220/apis/login.php";
@@ -65,6 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onFailure(Call call, IOException e) {
                         e.printStackTrace();
                         Log.v(t,"fail");
+                        prog.dismiss();
                     }
 
                     @Override
@@ -84,12 +93,12 @@ public class LoginActivity extends AppCompatActivity {
                                 String year = result.optString("year");
                                 Long created = result.optLong("created_at");
                                 Long updated = result.optLong("updated_at");
-                                session.CreateLoginSession(fname, lname, prn, branch, year);
+                                session.CreateLoginSession(fname, lname, prn, branch, year,email);
                                 Log.v("u","i");
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-
+                            prog.dismiss();
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);
                             finish();

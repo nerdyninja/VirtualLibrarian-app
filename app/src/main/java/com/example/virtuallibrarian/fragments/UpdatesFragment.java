@@ -1,5 +1,6 @@
 package com.example.virtuallibrarian.fragments;
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -31,6 +32,7 @@ public class UpdatesFragment extends Fragment {
     private List<Book> bookList = new ArrayList<Book>();
     RecyclerView recyclerView;
     UpdatesAdapter updatesAdapter;
+    NotificationManager manager;
 
 
     public UpdatesFragment()
@@ -48,8 +50,9 @@ public class UpdatesFragment extends Fragment {
         Log.v("t", "u");
         View view = inflater.inflate(R.layout.fragment_updates, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_updates);
+        manager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        new FetchUpdates(context, recyclerView).execute();
+        new FetchUpdates(context, recyclerView,manager).execute();
 
         // bookList.add(new Book("hello","its me","i was"));
         //updatesAdapter= new UpdatesAdapter(context,bookList);

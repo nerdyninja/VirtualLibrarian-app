@@ -29,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 if(tabId==R.id.fourth)
                 {
-                    fragment = new ProfileFragment();
+                    fragment = new ProfileFragment(HomeActivity.this);
                 }
                 else if(tabId==R.id.second)
                 {

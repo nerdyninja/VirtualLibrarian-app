@@ -33,8 +33,9 @@ public class SessionManager {
 
     // making it public so that it can be used in other classes too.
     public static final String KEY_FIRST_NAME = "username";
+    public static final String KEY_EMAIL = "email";
     public static final String KEY_LAST_NAME = "lastName";
-    public static final String KEY_PRN = "lastName";
+    public static final String KEY_PRN = "1115A1018";
     public static final String KEY_BRANCH = "lastName";
     public static final String KEY_YEAR = "lastName";
 
@@ -46,7 +47,7 @@ public class SessionManager {
         editor = pref.edit();
     }
 
-    public void CreateLoginSession(String fname,String lname,String prn,String branch,String year)
+    public void CreateLoginSession(String fname,String lname,String prn,String branch,String year,String email)
     {
         Log.v("in","Create login");
         // setting flag
@@ -55,6 +56,7 @@ public class SessionManager {
         // storing details
         editor.putString(KEY_FIRST_NAME,fname);
         editor.putString(KEY_LAST_NAME,lname);
+        editor.putString(KEY_EMAIL,email);
         editor.putString(KEY_PRN,prn);
         editor.putString(KEY_BRANCH,branch);
         editor.putString(KEY_YEAR,year);
@@ -96,7 +98,11 @@ public class SessionManager {
 
     public String getKeyPrn()
     {
-        return pref.getString(KEY_PRN,"115A1000");
+        return pref.getString(KEY_PRN,"115A1018");
+    }
+
+    public  String getKeyEmail() {
+        return pref.getString(KEY_EMAIL,"rohit.ramaswamy15@siesgst.ac.in");
     }
 
     public String getKeyBranch()
