@@ -82,7 +82,7 @@
                 android:id="@+id/book_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/faint_line"
+                android:layout_below="@id/faint_line"
                 android:layout_toRightOf="@id/time_stamp_logo"
                 android:paddingTop="7dp"
                 android:textColor="#9E9E9E"

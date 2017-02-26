@@ -6,14 +6,16 @@ package com.example.virtuallibrarian.utils;
 
 public class IssueCard {
     String title;
-    String created_at;
+    String description;
     String status;
+    String dateToDisplay;
 
-    IssueCard(String title,String created_at,String status)
+    IssueCard(String title,String description,String status,String dateToDisplay)
     {
         this.title = title;
-        this.created_at = created_at;
+        this.description = description;
         this.status = status;
+        this.dateToDisplay = dateToDisplay;
     }
     public void setTitle(String title)
     {
@@ -24,12 +26,12 @@ public class IssueCard {
         this.status = status;
     }
 
-    public void setCreated_at(String created_at) {
-        this.created_at = created_at;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getCreated_at() {
-        return this.created_at;
+    public String getDescription() {
+        return this.description;
     }
 
     public String getStatus() {
@@ -38,5 +40,13 @@ public class IssueCard {
 
     public String getTitle() {
         return this.title;
+    }
+
+    public void setDateToDisplay(String dateToDisplay) {
+        this.dateToDisplay = dateToDisplay;
+    }
+
+    public String getDateToDisplay() {
+        return this.dateToDisplay;
     }
 }

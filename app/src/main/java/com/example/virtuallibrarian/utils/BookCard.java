@@ -13,19 +13,21 @@ public class BookCard {
     String author;
     String categories;
     String isbn;
+    String dateToDisplay;
 
     public BookCard(String isbn)
     {
         this.isbn = isbn;
     }
 
-    public BookCard(String title,String description,String publisher, String author,String isbn)
+    public BookCard(String title,String description,String publisher, String author,String isbn,String dateToDisplay)
     {
         this.title = title;
         this.description = description;
         this.publisher = publisher;
         this.author = author;
         this.isbn = isbn;
+        this.dateToDisplay = dateToDisplay;
     }
     public BookCard(String title,String description)
     {
@@ -86,5 +88,13 @@ public class BookCard {
 
     public String getPublisher() {
         return this.publisher;
+    }
+
+    public String getDateToDisplay() {
+        return this.dateToDisplay;
+    }
+
+    public void setDateToDisplay(String dateToDisplay) {
+        this.dateToDisplay = dateToDisplay;
     }
 }

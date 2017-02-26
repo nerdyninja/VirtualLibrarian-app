@@ -58,6 +58,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
         TextView bookDescription;
         TextView bookAuthor;
         TextView bookPublisher;
+        TextView bookAge;
         ItemClickListener itemClickListener;
 
         BookViewHolder1(View itemView) {
@@ -67,6 +68,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
             bookDescription=(TextView)itemView.findViewById(R.id.book_design_surname);
             bookAuthor = (TextView)itemView.findViewById(R.id.author);
             bookPublisher = (TextView) itemView.findViewById(R.id.publisher);
+            bookAge = (TextView)itemView.findViewById(R.id.book_design_age);
 
             cv.setOnClickListener(this);
         }
@@ -98,6 +100,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
         holder.bookDescription.setText(bookCardList.get(position).description);
         holder.bookAuthor.setText(bookCardList.get(position).author);
         holder.bookPublisher.setText(bookCardList.get(position).publisher);
+        holder.bookAge.setText(bookCardList.get(position).dateToDisplay);
         Log.v("tag","tag");
         holder.setItemClickListener(new ItemClickListener() {
             @Override

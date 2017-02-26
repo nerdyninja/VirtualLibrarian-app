@@ -12,28 +12,30 @@ import android.widget.TextView;
 
 import com.example.virtuallibrarian.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by rohitramaswamy on 26/02/17.
+ * Created by rohitramaswamy on 25/02/17.
  */
 
-public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.IssueViewHolder> {
+public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.IssueViewHolder>{
 
 
-    List<IssueCard> issueCardList = new ArrayList<IssueCard>();
+    List<IssueCard> IssueList;
     SessionManager session;
     private LayoutInflater layoutInflater;
     Context ctx;
 
-    public IssueAdapter(Context context,List<IssueCard> issueCardList)
+    public IssueAdapter(Context context,List<IssueCard> IssueList)
     {
         ctx = context;
         session = new SessionManager(context);
-        this.issueCardList = session.getIssueList();
-        Log.v("booklist Size",issueCardList.size()+" ");
+        this.IssueList = session.getIssueList();
+        Log.v("booklist Size",IssueList.size()+" ");
+        //bookList=session.getBookList();
     }
+
+
 
     public static class IssueViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
@@ -52,31 +54,33 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.IssueViewHol
         }
     }
 
-
-
     @Override
     public IssueAdapter.IssueViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.update_design, parent, false);
-        IssueAdapter.IssueViewHolder pvh = new IssueAdapter.IssueViewHolder(v);
+        IssueAdapter.IssueViewHolder pvh = new IssueViewHolder(v);
         return pvh;
     }
 
     @Override
     public void onBindViewHolder(IssueAdapter.IssueViewHolder holder, int position) {
 
-        holder.personName.setText(issueCardList.get(position).title);
-        holder.personSurname.setText(issueCardList.get(position).created_at);
-        //holder.personAge.setText(bookList.get(position).time);
-        Log.v("SIES", /*issueCardList.get(position).type*/"ksk");
+        holder.personName.setText(IssueList.get(position).title);
+        holder.personAge.setText(IssueList.get(position).dateToDisplay);
+        //holder.personAge.setText(IssueList.get(position).DateToDisplay());
+        //Log.v("SIES", IssueList.get(position).type);
 
     }
 
     @Override
     public int getItemCount() {
-        if(issueCardList==null)
+        if(IssueList==null)
             return 0;
         else
-            return (int) issueCardList.size();
+            return (int) IssueList.size();
     }
 
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+    }
 }

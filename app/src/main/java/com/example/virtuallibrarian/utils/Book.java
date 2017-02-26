@@ -10,12 +10,14 @@ public class Book {
     String title;
     String description;
     String type;
+    String DateToDisplay;
 
-    public Book(String title, String description, String type)
+    public Book(String title, String description, String type,String DateToDisplay)
     {
         this.title = title;
         this.description = description;
         this.type = type;
+        this.DateToDisplay = DateToDisplay;
     }
 
     public void setTitle(String title)
@@ -26,10 +28,10 @@ public class Book {
     {
         this.description = description;
     }
-    /*public void setTime(String time)
+    public void setTime(String DateToDisplay)
     {
-        this.time = time;
-    }*/
+        this.DateToDisplay = DateToDisplay;
+    }
     public void setType(String type)
     {
         this.type = type;
@@ -46,9 +48,9 @@ public class Book {
     {
         return this.type;
     }
-    /*public String getTime()
+    public String getTime()
     {
-        return this.time;
-    }*/
+        return this.DateToDisplay;
+    }
 
 }

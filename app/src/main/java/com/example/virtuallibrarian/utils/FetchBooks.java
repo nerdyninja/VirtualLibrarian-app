@@ -17,6 +17,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by rohitramaswamy on 26/02/17.
@@ -84,7 +86,12 @@ public class FetchBooks extends AsyncTask<Void,Void,String> {
                 String publisher = jsonObject.optString("publisher");
                 String isbn = jsonObject.optString("isbn");
                 String categories = jsonObject.optString("categories");
-                session.addBook(new BookCard(title,description,author,publisher,isbn));
+                Long createdAt = Long.parseLong(created_at);
+                createdAt*=1000;
+                Date date = new Date(createdAt);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE, d MMM yyyy hh:mm aaa");
+                String dateToDisplay = simpleDateFormat.format(date);
+                session.addBook(new BookCard(title,description,author,publisher,isbn,dateToDisplay));
             }
         } catch (JSONException e) {
             e.printStackTrace();

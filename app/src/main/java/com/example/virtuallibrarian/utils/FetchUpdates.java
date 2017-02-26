@@ -25,6 +25,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by rohitramaswamy on 25/02/17.
@@ -131,11 +133,16 @@ public class FetchUpdates extends AsyncTask<Void,Void,String> {
                 String type = jsonObject.optString("type");
                 String created_at = jsonObject.optString("created_at");
                 String updated_at = jsonObject.optString("updated_at");
+                Long createdAt = Long.parseLong(created_at);
+                createdAt*=1000;
+                Date date = new Date(createdAt);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE, d MMM yyyy hh:mm aaa");
+                String dateToDisplay = simpleDateFormat.format(date);
                 if(type.equalsIgnoreCase("exams"))
                 {
                     showNotif(title);
                 }
-                session.addUpdate(new Book(title,description,type));
+                session.addUpdate(new Book(title,description,type,dateToDisplay));
             }
         } catch (JSONException e) {
             e.printStackTrace();
