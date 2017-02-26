@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -49,6 +51,9 @@ public class BooksFragment extends Fragment {
 
         Log.v("t","u");
         View view = inflater.inflate(R.layout.fragment_books, container, false);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        ActionBar actionBar = activity.getSupportActionBar();
+        actionBar.setTitle("Books");
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view_books);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         new FetchBooks(context,recyclerView).execute();

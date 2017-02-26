@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -48,6 +50,9 @@ public class UpdatesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         Log.v("t", "u");
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        ActionBar actionBar = activity.getSupportActionBar();
+        actionBar.setTitle("Updates");
         View view = inflater.inflate(R.layout.fragment_updates, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_updates);
         manager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);

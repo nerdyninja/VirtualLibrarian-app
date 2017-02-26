@@ -35,9 +35,9 @@ public class SessionManager {
     public static final String KEY_FIRST_NAME = "username";
     public static final String KEY_EMAIL = "email";
     public static final String KEY_LAST_NAME = "lastName";
-    public static final String KEY_PRN = "1115A1018";
-    public static final String KEY_BRANCH = "lastName";
-    public static final String KEY_YEAR = "lastName";
+    public static final String KEY_PRN = "115A1018";
+    public static final String KEY_BRANCH = "Computer Engineering";
+    public static final String KEY_YEAR = "Second Year";
 
 
     // Constructor
@@ -117,7 +117,7 @@ public class SessionManager {
 
     public String getName()
     {
-        return getKeyFirstName()+getKeyFirstName();
+        return getKeyFirstName()+" "+getKeyLastName();
     }
 
     public void addUpdate(Book bk)
